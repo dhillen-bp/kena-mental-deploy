@@ -72,10 +72,11 @@
                 </ul>
             </div>
             <div class="pt-3 text-center">
-                <h4>Counseling with the Best Clinical Psychologists: Professional, Empathizing, and Non-Judgmental</h4>
-                <h4>"Talk your heart out, find a way out of your problems."</h4>
+                <h4 class="text-sm">Counseling with the Best Clinical Psychologists: Professional, Empathizing, and
+                    Non-Judgmental</h4>
+                <h4 class="text-sm">"Talk your heart out, find a way out of your problems."</h4>
             </div>
-            <p class="text-secondary mb-3 mt-2 text-center">© 2023 kenamental.com</p>
+            <p class="text-secondary mb-3 mt-2 text-center text-xs">© 2023 kenamental.com</p>
         </div>
     </footer>
 @endsection

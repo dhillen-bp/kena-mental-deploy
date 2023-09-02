@@ -24,3 +24,12 @@ body{
 .text-purple {
     color: #A46FDA;
 }
+
+@media (max-width: 575.98px) {
+    .text-sm {
+        font-size: 14px;
+    }
+    .text-xs {
+        font-size: 12px;
+    }
+}

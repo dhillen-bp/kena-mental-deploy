@@ -8,9 +8,9 @@
             <p class="col-md-8 fs-4">
                 Consult with the Best Clinical Psychologists!
             </p>
-            <a href="/conseling" class="btn btn-light btn-lg fw-bold rounded-pill mt-4 px-4" style="color: #a46fda"
+            <a href="/psychologists" class="btn btn-light btn-lg fw-bold rounded-pill mt-4 px-4" style="color: #a46fda"
                 type="button">
-                Schedule Consultation
+                Find Psychologists
             </a>
         </div>
         <img src="{{ asset('images/banner-img.png') }}" style="object-fit: contain; max-width: 100%;" alt="" />

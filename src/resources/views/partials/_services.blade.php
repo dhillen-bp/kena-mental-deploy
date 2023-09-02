@@ -18,7 +18,7 @@
             <div class="card-body d-flex flex-column align-items-center justify-content-center">
                 <h5 class="card-title fw-bold">Ask a Psychologist</h5>
                 <p class="card-text text-center">Free service that you can access to ask about your mental problems.</p>
-                <a href="/tanya-psikolog" class="btn btn-purple">Ask Now</a>
+                <a href="/psychologists" class="btn btn-purple">Ask Now</a>
             </div>
         </div>
 
