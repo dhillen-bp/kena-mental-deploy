@@ -1,0 +1,61 @@
+steps:
+  # Step 1:  Creating a service-account-key.json file
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo "${_SERVICE_ACCOUNT_KEY}" > /workspace/src/service-account-key.json
+
+  # Additional steps 1.2: Display the contents of the /app directory (optional)
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        workspace_dir=$(pwd)
+        ls -la $(pwd)/src
+        cat $(pwd)/src/service-account-key.json
+
+  # Step 2: Copy .env.example to .env and replace values
+  - name: "bash"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - 'cp /workspace/src/.env.example /workspace/src/.env && sed -i "s/APP_ENV=local/APP_ENV=production/" /workspace/src/.env'
+
+  # Additional steps 1.2: Display the contents of the /app directory (optional)
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        workspace_dir=$(pwd)
+        ls -la $(pwd)/src/
+        cat $(pwd)/src/.env
+
+  # Step 3: Build Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/kenamental-397500/kenamental:1.0", "."]
+
+  # Step 4: Push image Docker to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/kenamental-397500/kenamental:1.0"]
+
+  # Step 5: Deploy to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "kena-mental"
+      - "--image"
+      - "gcr.io/kenamental-397500/kenamental:1.0"
+      - "--platform"
+      - "managed"
+      - "--region"
+      - "asia-southeast2"
+      - "--allow-unauthenticated"
+      - "--port"
+      - "8000"
+      - "--update-env-vars"
+      - "DB_DATABASE=$_DB_DATABASE,DB_USERNAME=$_DB_USERNAME,DB_PASSWORD=$_DB_PASSWORD,DB_HOST=$_DB_HOST,APP_URL=$_APP_URL,APP_KEY=$_APP_KEY,GOOGLE_CLIENT_ID=$_GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET=$_GOOGLE_CLIENT_SECRET,GOOGLE_CLIENT_REDIRECT=$_GOOGLE_CLIENT_REDIRECT,MIDTRANS_MERCHANT_ID=$_MIDTRANS_MERCHANT_ID,MIDTRANS_CLIENT_KEY=$_MIDTRANS_CLIENT_KEY,MIDTRANS_SERVER_KEY=$_MIDTRANS_SERVER_KEY,MIDTRANS_IS_PRODUCTION=$_MIDTRANS_IS_PRODUCTION,MIDTRANS_SNAP_URL=$_MIDTRANS_SNAP_URL,GOOGLE_APPLICATION_CREDENTIALS=$_GOOGLE_APPLICATION_CREDENTIALS"

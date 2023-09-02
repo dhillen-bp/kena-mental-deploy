@@ -1,0 +1,26 @@
+body{
+    height: 100%;
+}
+
+.bg-purple {
+    background-color: #A46FDA;
+    color: white;
+}
+
+.border-purple{
+    border-color: #A46FDA;
+}
+
+.btn-purple {
+    background-color: #A46FDA;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #9854dd;
+    color: white;
+}
+
+.text-purple {
+    color: #A46FDA;
+}

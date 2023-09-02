@@ -1,0 +1,11 @@
+{
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+    "editor.autoClosingBrackets": "always",
+    "emmet.triggerExpansionOnTab": true,
+    "blade.format.enable": true,
+    "editor.formatOnSave": true,
+    "LaravelExtraIntellisense.customValidationRules": {
+        "mobile": "mobile",
+        "distance_gt": "distance_gt:${0:1km}"
+    }
+}
