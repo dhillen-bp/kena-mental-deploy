@@ -9,7 +9,7 @@ class GCSHelper
     public static function uploadFile($bucketName, $folderName, $request, $columnName, $fileName)
     {
         $storage = new StorageClient([
-            'keyFilePath' => env('GOOGLE_APPLICATION_CREDENTIALS'),
+            'keyFilePath' => base_path(env('GOOGLE_APPLICATION_CREDENTIALS')),
         ]);
 
         $bucket = $storage->bucket($bucketName);
